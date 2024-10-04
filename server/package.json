@@ -1,0 +1,39 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Express JS Backend API for Telugu Bojanam - A Food Ordering App",
+  "main": "./src/index.js",
+  "scripts": {
+    "start":"node ./src/index.js",
+    "dev":"nodemon ./src/index.js",
+    "build":"npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sundeeep/telugu-boojanam/server"
+  },
+  "keywords": [
+    "express",
+    "restaurants",
+    "menu",
+    "orders",
+    "cart",
+    "food",
+    "telugu"
+  ],
+  "author": "Sundeeep Dasari",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "express-json": "^1.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
