@@ -66,7 +66,8 @@ const addressSchema = mongoose.Schema({
             type: String,
             requied: true
         }
-    ]
+    ],
+    directionsToReach: String
 },{
     timestamps: true
 });
