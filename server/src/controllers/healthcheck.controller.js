@@ -4,7 +4,7 @@ import asyncHandler from "../utils/asyncHandler";
 const healthCheck = asyncHandler(async(req, res, next)=>{
     return res
             .status(200)
-            .json(APISuccessResponse(200, "OK", "🚀 API Health Check has been passed! 💚"))
+            .json(new APISuccessResponse(200, "OK", "🚀 API Health Check has been passed! 💚"))
 })
 
 export default healthCheck;
