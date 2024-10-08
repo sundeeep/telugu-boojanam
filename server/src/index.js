@@ -1,30 +1,25 @@
-import http from 'http';
-import cors from 'cors';
-import express from "express";
-import dotenv from 'dotenv';
-import { connectMongoDB } from './db/index.js';
-dotenv.config({path: ".env"});
+import dotenv from "dotenv"
+import drugboardServer from './app.js'
+import { PORT } from "./constants.js";
+import connectMongoDB from "./db/mongodb/index.js";
 
-const app = express();
-
-app.use(express.json());
-
-app.get("/", (req, res)=>{
-    const message = "Welcome to Andhra Bojanam, a Food Ordering Application."
-    res.status(200).json({
-        message
-    })
-});
-
-const httpServer = http.createServer(app);
-
-const PORT = process.env.PORT || 8001;
-
-httpServer.listen(PORT, async()=>{
-    console.log(`🚀 HTTP Server is running on PORT: ${PORT}`);
-    try{
-        await connectMongoDB();
-    }catch(error){
-        console.log("Error in ./src/index.js: ", error);
-    }
+dotenv.config({
+    path: './.env'
 })
+
+
+const launchDrugboardServer = async () => {
+    try{
+        const mongoDBInstance = await connectMongoDB();
+        if(mongoDBInstance?.connection?.host){
+            const port = PORT || 8001;
+            drugboardServer.listen(port, async()=>{
+                console.log(`🚀 HTTP Server is running on the port ${port}\n`)
+            })
+        }
+    }catch(error){
+        console.log("Error in starting Drugboard Server: \n", error);
+    }
+}
+
+launchDrugboardServer();
